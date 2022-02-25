@@ -60,12 +60,11 @@ function checkHours() {
 // add click event listener for save btn
 saveBtn.click(function() {
     var $this = $(this),
-        text = $this.siblings(".description").val(),
-        time = $this.parent().attr("data-hour");
-    console.log(text, time);
+        time = $this.parent().attr("data-hour"),
+        data = $this.siblings(".description").val();
 
     // save into local storage
-    localStorage.setItem(time, text);
+    localStorage.setItem(time, data);
 });
 
 // load time slots from local storage

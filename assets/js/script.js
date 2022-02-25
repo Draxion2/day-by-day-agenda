@@ -1,26 +1,36 @@
-// create array for hourly time slots
-// create elements that make up time slots
-// append elements together
-// check due date
-// append elements on the page
+// config variables
+var currentDay = $("#currentDay"),
+    saveBtn = $(".saveBtn"),
+    timeSlot = $(".time-block"),
+    hour = $(".hour");
 
-// load previous time slots from local storage
-// if nothing, check due date
+// add click event listener for save btn
+saveBtn.click(function() {
+    var $this = $(this),
+        text = $this.siblings(".description").val(),
+        time = $this.parent().attr("id");
+    console.log(text, time);
 
-// save time slots from local storage
-// get date from time slot element
-// convert to moment object by the hour
+    // save into local storage
+    // localStorage.setItem(time, text);
+});
 
-// remove classes from element
-// apply new classes if time slot is near or over due
+function checkHour() {
 
-// time slot is clicked
-// get current text of textarea element
-// replace textarea element with new input
+    // get current hour
+    var currentHour = moment().hour();
 
-// update time slot in array and save again to local storage
-// replace textarea with new content
+    // loop through the time blocks and return time
+    timeSlot.each(function() {
+    // change classes accordingly
+    });
+}
 
-// remove all time slots
+// load time slots from local storage
 
-// load time slots for the first time
+// get today's date for the top of the page
+setInterval(() => {
+    var currentDate = moment()
+    .format("dddd, MMMM Do YYYY, h:mm:ss a");
+    currentDay.text(currentDate);
+}, 1000);

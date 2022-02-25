@@ -4,33 +4,73 @@ var currentDay = $("#currentDay"),
     timeSlot = $(".time-block"),
     hour = $(".hour");
 
-// add click event listener for save btn
-saveBtn.click(function() {
-    var $this = $(this),
-        text = $this.siblings(".description").val(),
-        time = $this.parent().attr("id");
-    console.log(text, time);
+// config current date and time
+var currentDate = moment().format("dddd, MMMM Do YYYY, h a");
+currentDay.text(currentDate);
 
-    // save into local storage
-    // localStorage.setItem(time, text);
-});
-
-function checkHour() {
+// check the time slot hours
+function checkHours() {
 
     // get current hour
     var currentHour = moment().hour();
 
     // loop through the time blocks and return time
     timeSlot.each(function() {
-    // change classes accordingly
+        var $this = $(this),
+            timeSlotHour = $this.attr("data-hour");
+        parseInt(timeSlotHour);
+
+        // change classes accordingly
+
+        // past
+        if (timeSlotHour < currentHour) {
+
+            // remove previous classes assigned
+            $this.removeClass("present");
+            $this.removeClass("future");
+
+            // add new class
+            $this.addClass("past");
+        }
+
+        // present
+        else if (timeSlotHour === currentHour) {
+
+            // remove previous classes assigned
+            $this.removeClass("past");
+            $this.removeClass("future");
+
+            // add new class
+            $this.addClass("present");
+        }
+
+        // future
+        else {
+
+            // remove previous classes assigned
+            $this.removeClass("past");
+            $this.removeClass("present");
+
+            // add new class
+            $this.addClass("future");
+        }
     });
 }
 
-// load time slots from local storage
+// add click event listener for save btn
+saveBtn.click(function() {
+    var $this = $(this),
+        text = $this.siblings(".description").val(),
+        time = $this.parent().attr("data-hour");
+    console.log(text, time);
 
-// get today's date for the top of the page
-setInterval(() => {
-    var currentDate = moment()
-    .format("dddd, MMMM Do YYYY, h:mm:ss a");
-    currentDay.text(currentDate);
-}, 1000);
+    // save into local storage
+    localStorage.setItem(time, text);
+});
+
+// load time slots from local storage
+for (var i = 1; i < 13; i++) {
+    $('*[data-hour="' + i + '"] .description').val(localStorage.getItem(i));
+};
+
+checkHours();

@@ -1,7 +1,18 @@
+:root {
+    --primary: #B18F5C;
+    --secondary: #C3B087;
+    --tertiary: #9B8F56;
+    --main-background: #472026;
+    --border-primary: #c1ae51;
+    --border-secondary: #948669;
+}
+
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1;
+    background: var(--main-background);
   }
   
   textarea{
@@ -15,10 +26,10 @@ body {
   
   .jumbotron {
     text-align: center;
-    background-color: transparent;
+    background-color: var(--primary);
     color: black;
     border-radius: 0;
-    border-bottom: 10px solid black;
+    border-bottom: 10px solid var(--border-secondary);
   }
   
   .description{

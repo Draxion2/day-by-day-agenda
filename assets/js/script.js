@@ -1,18 +1,33 @@
 // config variables
 var currentDay = $("#currentDay"),
+    workHours = $("#workHours"),
     saveBtn = $(".saveBtn"),
     timeSlot = $(".time-block"),
     hour = $(".hour");
 
 // config current date and time
 var currentDate = moment().format("dddd, MMMM Do YYYY, h a");
+var afterDate = moment().format("h a");
 currentDay.text(currentDate);
 
 // check the time slot hours
 function checkHours() {
 
-    // get current hour
-    var currentHour = moment().hour();
+    // get current hour & either am or pm
+    var currentHour = 2 // moment().hour();
+    var am_pm = " pm" // afterDate.substring(afterDate.lastIndexOf(' '));
+
+    // check if current hour matches between 9 AM - 5 PM
+    for (var a = 1, p = 6; a < 9, p < 12; a++, p++) {
+        if (currentHour + am_pm == a + " am" ||
+            currentHour + am_pm == p + " pm" ||
+            currentHour + am_pm == "12 am") {
+            console.log("Time is not current");
+            workHours.text("Current time is outside of work hours!");
+            timeSlot.addClass("past");
+        return;
+        };
+    }
 
     // loop through the time blocks and return time
     timeSlot.each(function() {
@@ -34,7 +49,7 @@ function checkHours() {
         }
 
         // present
-        else if (timeSlotHour === currentHour) {
+        else if (timeSlotHour == currentHour) {
 
             // remove previous classes assigned
             $this.removeClass("past");
@@ -45,7 +60,7 @@ function checkHours() {
         }
 
         // future
-        else {
+        else if (timeSlotHour > currentHour) {
 
             // remove previous classes assigned
             $this.removeClass("past");

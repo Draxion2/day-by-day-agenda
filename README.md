@@ -6,7 +6,7 @@ This is a third-party API application that allows the user to save daily tasks b
 
 To give users the opportunity to schedule tasks during the usual work hours (9am - 5pm).
 
-![alt text](https://i.gyazo.com/e1c0af6de44e5a8084aa2c957f0a8a4d.png)
+![alt text](https://i.gyazo.com/741c0b284b2f92a81549e876c03ad73e.png)
 
 ## Goals
 * Work with third-party API's like Jquery and Bootstrap to display a beautiful site.

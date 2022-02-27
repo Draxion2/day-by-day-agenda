@@ -43,6 +43,18 @@ body {
   #workHours {
     color: #fff;
   }
+
+  #clearSlots {
+    width: 250px;
+    background: #55050c;
+    border: 0;
+  }
+
+  #clearSlots:hover {
+    background: #fff;
+    color: #000;
+    transition: all .3s ease-in-out;
+  }
   /* jumbotron end */
   
   /* time blocks start */

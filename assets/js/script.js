@@ -2,6 +2,7 @@
 var currentDay = $("#currentDay"),
     workHours = $("#workHours"),
     saveBtn = $(".saveBtn"),
+    clearTasks = $("#clearSlots"),
     timeSlot = $(".time-block"),
     hour = $(".hour");
 
@@ -14,8 +15,8 @@ currentDay.text(currentDate);
 function checkHours() {
 
     // get current hour & either am or pm
-    var currentHour = 2 // moment().hour();
-    var am_pm = " pm" // afterDate.substring(afterDate.lastIndexOf(' '));
+    var currentHour = moment().hour();
+    var am_pm = afterDate.substring(afterDate.lastIndexOf(' '));
 
     // check if current hour matches between 9 AM - 5 PM
     for (var a = 1, p = 6; a < 9, p < 12; a++, p++) {
@@ -86,5 +87,11 @@ saveBtn.click(function() {
 for (var i = 1; i < 13; i++) {
     $('*[data-hour="' + i + '"] .description').val(localStorage.getItem(i));
 };
+
+// clear the tasks
+clearTasks.click(function() {
+    localStorage.clear();
+    document.location.reload();
+});
 
 checkHours();

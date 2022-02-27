@@ -119,3 +119,20 @@ body {
     transition: all .3s ease-in-out;
   }
   /* time blocks end */
+
+  /* media queries for smaller devices */
+  @media screen and (max-width: 768px) {
+    #clearSlots {
+      width: 100%;
+    }
+    .time-block {
+      margin: 70px 0;
+    }
+    .hour {
+      height: 50%;
+      line-height: 35px;
+    }
+    textarea {
+      border-bottom: 1px solid #000;
+    }
+  }

@@ -75,12 +75,21 @@ function checkHours() {
 
 // add click event listener for save btn
 saveBtn.click(function() {
+
+    // check for empty value
     var $this = $(this),
+        hourContent = $this.siblings(".hour").text();
         time = $this.parent().attr("data-hour"),
         data = $this.siblings(".description").val();
 
-    // save into local storage
-    localStorage.setItem(time, data);
+    if (!data) {
+        alert("Please provide a value in the time slot for " + hourContent);
+        return;
+    } else {
+
+        // save into local storage
+        localStorage.setItem(time, data);
+    }
 });
 
 // load time slots from local storage
